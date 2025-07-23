@@ -16,12 +16,10 @@ func remove_snow(delta) -> void:
 	var source_id = snow.get_cell_source_id(snow_tile)
 	if source_id != -1:
 		snow.erase_cell(snow_tile)
-		increase_player(delta)
+		#increase_player(delta)
 
 func increase_player(delta) -> void:
 	player.scale = player.scale + Vector2(5, 5) * delta
 
 func game_over() -> void:
 	print("GAME OVER.")
-	
-	set_process(false)

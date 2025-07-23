@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const max_speed: int = 80
-const acceleration: int = 50
-const friction: int = 8
+const MAX_SPEED: int = 80
+const ACCELERATION: int = 50
+const FRICTION: int = 8
 
 @onready var snow: TileMapLayer = $"../Floor/Snow"
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var input = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"), Input.get_action_strength("down") - Input.get_action_strength("up")).normalized()
 	
-	var lerp_weight = delta * (acceleration if input else friction)
-	velocity = lerp(velocity, input * max_speed, lerp_weight)
+	var lerp_weight = delta * (ACCELERATION if input else FRICTION)
+	velocity = lerp(velocity, input * MAX_SPEED, lerp_weight)
 	
 	move_and_slide()
 
@@ -23,7 +23,7 @@ func defrosting() -> void:
 	scale.x = scale.x - 0.1
 	scale.y = scale.y - 0.1
 	
-	print(scale)
+	#print(scale)
 	
 	if scale < Vector2(0.5, 0.5):
 		die()
@@ -38,4 +38,5 @@ func die() -> void:
 	SignalManager.on_player_died.emit()
 
 func _on_timer_timeout() -> void:
-	defrosting()
+	#defrosting()
+	pass

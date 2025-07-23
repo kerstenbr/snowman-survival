@@ -8,6 +8,7 @@ radius = 7.0
 height = 24.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 12
 script = ExtResource("1_ofys3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
