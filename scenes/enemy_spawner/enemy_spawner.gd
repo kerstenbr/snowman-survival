@@ -17,4 +17,3 @@ func _on_timer_timeout() -> void:
 	
 	enemy.global_position = spawn.global_position
 	container.add_child(enemy)
-	print("Inimigo Criado")

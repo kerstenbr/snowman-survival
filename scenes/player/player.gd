@@ -7,6 +7,9 @@ const FRICTION: int = 8
 @onready var snow: TileMapLayer = $"../Floor/Snow"
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
 
+func _ready() -> void:
+	SignalManager.on_player_hit.connect(damage_taken)
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
@@ -23,9 +26,7 @@ func defrosting() -> void:
 	scale.x = scale.x - 0.1
 	scale.y = scale.y - 0.1
 	
-	#print(scale)
-	
-	if scale < Vector2(0.5, 0.5):
+	if scale < Vector2(0.1, 0.1):
 		die()
 
 func shoot() -> void:
@@ -36,6 +37,10 @@ func shoot() -> void:
 
 func die() -> void:
 	SignalManager.on_player_died.emit()
+
+func damage_taken() -> void:
+	print("ouch")
+	scale = scale - Vector2(0.5, 0.5)
 
 func _on_timer_timeout() -> void:
 	#defrosting()

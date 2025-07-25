@@ -42,9 +42,14 @@ shape = SubResource("CircleShape2D_ab0ho")
 scale = Vector2(99, 99)
 shape = SubResource("RectangleShape2D_pvqd7")
 
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
 [connection signal="body_entered" from="ShootingDistance" to="." method="_on_shooting_distance_body_entered"]
 [connection signal="body_exited" from="ShootingDistance" to="." method="_on_shooting_distance_body_exited"]
 [connection signal="body_entered" from="PlayerReference" to="." method="_on_player_reference_body_entered"]
+[connection signal="timeout" from="ShootDelay" to="." method="_on_shoot_delay_timeout"]
