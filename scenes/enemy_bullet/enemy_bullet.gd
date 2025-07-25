@@ -20,3 +20,4 @@ func _on_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		SignalManager.on_player_hit.emit()
+		queue_free()

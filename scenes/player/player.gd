@@ -39,9 +39,10 @@ func die() -> void:
 	SignalManager.on_player_died.emit()
 
 func damage_taken() -> void:
-	print("ouch")
 	scale = scale - Vector2(0.5, 0.5)
+	
+	if scale < Vector2(0.1, 0.1):
+		die()
 
 func _on_timer_timeout() -> void:
-	#defrosting()
-	pass
+	defrosting()
