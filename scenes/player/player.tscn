@@ -21,7 +21,11 @@ shape = SubResource("CapsuleShape2D_5idw0")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="DefrostTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ShootDelay" type="Timer" parent="."]
+
+[connection signal="timeout" from="DefrostTimer" to="." method="_on_defrost_timer_timeout"]
+[connection signal="timeout" from="ShootDelay" to="." method="_on_shoot_delay_timeout"]

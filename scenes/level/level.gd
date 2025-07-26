@@ -3,6 +3,8 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var snow: TileMapLayer = $Floor/Snow
 
+const INCREASE_RATE: Vector2 = Vector2(1, 1)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.on_player_died.connect(game_over)
@@ -19,7 +21,7 @@ func remove_snow(delta) -> void:
 		increase_player(delta)
 
 func increase_player(delta) -> void:
-	player.scale = player.scale + Vector2(5, 5) * delta
+	player.scale = player.scale + Vector2(1, 1) * delta
 
 func game_over() -> void:
 	print("GAME OVER.")

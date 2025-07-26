@@ -3,9 +3,14 @@ extends CharacterBody2D
 const MAX_SPEED: int = 80
 const ACCELERATION: int = 50
 const FRICTION: int = 8
+const DEFROST_RATE: Vector2 = Vector2(0.1, 0.1)
 
+@onready var shoot_delay: Timer = $ShootDelay
 @onready var snow: TileMapLayer = $"../Floor/Snow"
+
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
+
+var can_shoot: bool = true
 
 func _ready() -> void:
 	SignalManager.on_player_hit.connect(damage_taken)
@@ -23,26 +28,31 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func defrosting() -> void:
-	scale.x = scale.x - 0.1
-	scale.y = scale.y - 0.1
+	scale = scale - DEFROST_RATE
 	
 	if scale < Vector2(0.1, 0.1):
 		die()
 
 func shoot() -> void:
-	var new_bullet = BULLET.instantiate()
+	if can_shoot == true:
+		var new_bullet = BULLET.instantiate()
 
-	new_bullet.global_position=global_position
-	get_tree().root.add_child(new_bullet)
+		new_bullet.global_position=global_position
+		get_tree().root.add_child(new_bullet)
+		shoot_delay.start()
+		can_shoot = false
 
 func die() -> void:
 	SignalManager.on_player_died.emit()
 
 func damage_taken() -> void:
-	scale = scale - Vector2(0.5, 0.5)
+	scale = scale - Vector2(0.1, 0.1)
 	
 	if scale < Vector2(0.1, 0.1):
 		die()
 
-func _on_timer_timeout() -> void:
+func _on_defrost_timer_timeout() -> void:
 	defrosting()
+
+func _on_shoot_delay_timeout() -> void:
+	can_shoot = true
