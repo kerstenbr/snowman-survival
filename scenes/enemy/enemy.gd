@@ -17,13 +17,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_inside_vision == true:
+		velocity = Vector2(0, 0)
 		shoot()
 
 func _physics_process(delta: float) -> void:
 	if player:
-		var direction = (player.global_position - global_position).normalized()
-		velocity = direction * SPEED
-		move_and_slide()
+		if player_inside_vision == false:
+			var direction = (player.global_position - global_position).normalized()
+			velocity = direction * SPEED
+			move_and_slide()
+		else:
+			velocity = Vector2(0, 0)
 
 func _on_shooting_distance_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):

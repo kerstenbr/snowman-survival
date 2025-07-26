@@ -10,7 +10,7 @@ size = Vector2(24, 24)
 size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab0ho"]
-radius = 271.472
+radius = 149.03
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvqd7"]
 
@@ -43,7 +43,7 @@ scale = Vector2(99, 99)
 shape = SubResource("RectangleShape2D_pvqd7")
 
 [node name="ShootDelay" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
