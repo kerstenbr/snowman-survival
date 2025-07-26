@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxsh4mbw4njph"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_di4h3"]
-[ext_resource type="Texture2D" uid="uid://dtxrdpg484lyq" path="res://icon.svg" id="1_f2x5a"]
+[ext_resource type="Texture2D" uid="uid://tgkobs5gblco" path="res://assets/enemy/Krampus.png" id="2_41nq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlot0"]
 size = Vector2(24, 24)
@@ -20,8 +20,8 @@ collision_mask = 3
 script = ExtResource("1_di4h3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1875, 0.1875)
-texture = ExtResource("1_f2x5a")
+texture_filter = 1
+texture = ExtResource("2_41nq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mlot0")

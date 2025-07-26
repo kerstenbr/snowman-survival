@@ -6,7 +6,7 @@ const FRICTION: int = 8
 const DEFROST_RATE: Vector2 = Vector2(0.1, 0.1)
 
 @onready var shoot_delay: Timer = $ShootDelay
-@onready var snow: TileMapLayer = $"../Floor/Snow"
+#@onready var snow: TileMapLayer = $"../Floor/Snow"
 
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed: int = 200
+var speed: int = 100
 var bullet_direction: Vector2
 
 # Called when the node enters the scene tree for the first time.
