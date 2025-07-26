@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func defrosting() -> void:
 	scale = scale - DEFROST_RATE
 	
-	if scale < Vector2(0.1, 0.1):
+	if scale < Vector2(0.5, 0.5):
 		die()
 
 func shoot() -> void:
@@ -48,7 +48,7 @@ func die() -> void:
 func damage_taken() -> void:
 	scale = scale - Vector2(0.1, 0.1)
 	
-	if scale < Vector2(0.1, 0.1):
+	if scale < Vector2(0.5, 0.5):
 		die()
 
 func _on_defrost_timer_timeout() -> void:

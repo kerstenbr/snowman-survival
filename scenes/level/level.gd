@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $Player
 @onready var snow: TileMapLayer = $Floor/Snow
+@onready var enemies: Node2D = $Enemies
 
 const INCREASE_RATE: Vector2 = Vector2(1, 1)
 

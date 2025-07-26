@@ -12,8 +12,17 @@ func _ready() -> void:
 			spawn_points.append(i)
 
 func _on_timer_timeout() -> void:
+	var enemies = 0
+	for child in container.get_children():
+		if child.is_in_group("Enemy"):
+			enemies += 1
+	
 	var spawn = spawn_points[randi() % spawn_points.size()]
 	var enemy = enemy_scene.instantiate()
 	
 	enemy.global_position = spawn.global_position
-	container.add_child(enemy)
+	
+	if enemies >= 50:
+		return
+	else:
+		container.add_child(enemy)

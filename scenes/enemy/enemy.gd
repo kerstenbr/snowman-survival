@@ -12,11 +12,11 @@ const ENEMY_BULLET = preload("res://scenes/enemy_bullet/enemy_bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	player = get_tree().get_first_node_in_group("Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if player_inside_vision == true:
+	if player_inside_vision == true and can_shoot == true:
 		velocity = Vector2(0, 0)
 		shoot()
 
@@ -37,21 +37,20 @@ func _on_shooting_distance_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_inside_vision = false
 
-func _on_player_reference_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		player = body
+#func _on_player_reference_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("Player"):
+		#player = body
 
 func shoot():
-	if can_shoot == true:
-		var bullet = ENEMY_BULLET.instantiate()
-		bullet.position = global_position
+	var bullet = ENEMY_BULLET.instantiate()
+	bullet.position = global_position
 	
-		var direction = (player.global_position - global_position).normalized()
-		bullet.direction = direction
+	var direction = global_position.direction_to(player.global_position)
+	bullet.direction = direction
 	
-		get_parent().call_deferred("add_child", bullet)
-		can_shoot = false
-		shoot_delay.start()
+	get_parent().call_deferred("add_child", bullet)
+	can_shoot = false
+	shoot_delay.start()
 
 func _on_shoot_delay_timeout() -> void:
 	can_shoot = true
