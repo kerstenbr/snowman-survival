@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-const MAX_SPEED: int = 80
+const MAX_SPEED: int = 90
 const ACCELERATION: int = 50
 const FRICTION: int = 8
 const DEFROST_RATE: Vector2 = Vector2(0.1, 0.1)
 
 @onready var shoot_delay: Timer = $ShootDelay
-#@onready var snow: TileMapLayer = $"../Floor/Snow"
+@onready var snow_sound: AudioStreamPlayer2D = $snow_sound
+@onready var defrost_timer: Timer = $DefrostTimer
 
 const BULLET = preload("res://scenes/bullet/bullet.tscn")
 
@@ -41,12 +42,21 @@ func shoot() -> void:
 		get_tree().root.add_child(new_bullet)
 		shoot_delay.start()
 		can_shoot = false
+		play_sound()
+
+func play_sound() -> void:
+	var pitch = randf_range(0.80, 1.20)
+	snow_sound.pitch_scale = pitch
+	snow_sound.play()
 
 func die() -> void:
+	defrost_timer.stop()
+	set_physics_process(false)
+	set_process(false)
 	SignalManager.on_player_died.emit()
 
 func damage_taken() -> void:
-	scale = scale - Vector2(0.1, 0.1)
+	scale = scale - Vector2(0.5, 0.5)
 	
 	if scale < Vector2(0.5, 0.5):
 		die()

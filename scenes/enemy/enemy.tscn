@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxsh4mbw4njph"]
+[gd_scene load_steps=7 format=3 uid="uid://bxsh4mbw4njph"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_di4h3"]
 [ext_resource type="Texture2D" uid="uid://tgkobs5gblco" path="res://assets/enemy/Krampus.png" id="2_41nq0"]
+[ext_resource type="AudioStream" uid="uid://b2nwrckgud6fa" path="res://assets/sounds/fireball_sound.wav" id="3_h0yjq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlot0"]
 size = Vector2(24, 24)
@@ -10,9 +11,10 @@ size = Vector2(24, 24)
 size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ab0ho"]
-radius = 149.03
+radius = 116.001
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_di4h3")
@@ -37,6 +39,10 @@ shape = SubResource("CircleShape2D_ab0ho")
 [node name="ShootDelay" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="fireball_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h0yjq")
+volume_db = -15.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

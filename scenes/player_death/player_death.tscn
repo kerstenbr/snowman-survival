@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://d38r6gdkkfget"]
+
+[ext_resource type="Script" path="res://scenes/player_death/player_death.gd" id="1_7qlqe"]
+[ext_resource type="Texture2D" uid="uid://dqa452kt2sr4e" path="res://assets/player/dead_player.png" id="1_22huc"]
+[ext_resource type="AudioStream" uid="uid://7qcdmtyfn5ji" path="res://assets/sounds/death.wav" id="3_isif8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqml4"]
+font_size = 50
+
+[node name="PlayerDeath" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_7qlqe")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(256, 256)
+scale = Vector2(13.75, 13.75)
+texture = ExtResource("1_22huc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 248.0
+offset_right = 842.0
+offset_bottom = 317.0
+text = "You died"
+label_settings = SubResource("LabelSettings_fqml4")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 317.0
+offset_right = 824.0
+offset_bottom = 349.0
+text = "Menu"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_isif8")
+volume_db = -11.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

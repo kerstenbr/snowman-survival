@@ -1,10 +1,11 @@
 extends Area2D
 
-var speed: int = 100
+var speed: int = 140
 var bullet_direction: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalManager.on_player_died.connect(player_died)
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	bullet_direction = (mouse_pos - global_position).normalized()
 
@@ -19,3 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		queue_free()
 		body.queue_free()
+
+func player_died() -> void:
+	queue_free()

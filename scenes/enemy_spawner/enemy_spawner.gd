@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var container = get_node("/root/Level/Enemies")
+@onready var timer: Timer = $Timer
 
 var enemy_scene: PackedScene = preload("res://scenes/enemy/enemy.tscn")
 var spawn_points: Array[Marker2D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalManager.on_player_died.connect(player_died)
 	for i in get_children():
 		if i is Marker2D:
 			spawn_points.append(i)
@@ -26,3 +28,6 @@ func _on_timer_timeout() -> void:
 		return
 	else:
 		container.add_child(enemy)
+
+func player_died() -> void:
+	timer.stop()

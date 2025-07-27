@@ -4,6 +4,7 @@ extends Node2D
 @onready var snow: TileMapLayer = $Floor/Snow
 @onready var enemies: Node2D = $Enemies
 
+const PLAYER_DEATH = preload("res://scenes/player_death/player_death.tscn")
 const INCREASE_RATE: Vector2 = Vector2(1, 1)
 
 # Called when the node enters the scene tree for the first time.
@@ -19,10 +20,10 @@ func remove_snow(delta) -> void:
 	var source_id = snow.get_cell_source_id(snow_tile)
 	if source_id != -1:
 		snow.erase_cell(snow_tile)
-		increase_player(delta)
+		increase_player()
 
-func increase_player(delta) -> void:
-	player.scale = player.scale + Vector2(1, 1) * delta
+func increase_player() -> void:
+	player.scale = player.scale + Vector2(0.015, 0.015)
 
 func game_over() -> void:
-	print("GAME OVER.")
+	get_tree().change_scene_to_packed(PLAYER_DEATH)

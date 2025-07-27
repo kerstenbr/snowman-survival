@@ -1,4 +1,14 @@
-[gd_scene format=3 uid="uid://nj3khfdxhur2"]
+[gd_scene load_steps=4 format=3 uid="uid://nj3khfdxhur2"]
+
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_muo8c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu8b5"]
+font_size = 50
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_orrtw"]
+font_size = 25
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -7,11 +17,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_muo8c")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 399.0
-offset_top = 153.0
-offset_right = 439.0
-offset_bottom = 176.0
-text = "MENU"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -199.5
+offset_right = 85.5
+offset_bottom = -150.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SNOWMAN SURVIVAL"
+label_settings = SubResource("LabelSettings_hu8b5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -25.0
+offset_right = 74.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -153.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "All your friends have already accepted their fate and melted away.
+Will you?"
+label_settings = SubResource("LabelSettings_orrtw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
