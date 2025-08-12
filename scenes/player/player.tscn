@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://brxqln412wok4"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ofys3"]
+[ext_resource type="Script" uid="uid://bgneg4qjqpdh8" path="res://scenes/player/player.gd" id="1_ofys3"]
 [ext_resource type="Texture2D" uid="uid://bu1fpe5gebwpu" path="res://assets/player/player.png" id="2_lo2dy"]
 [ext_resource type="AudioStream" uid="uid://cmkg4rbe1w6jt" path="res://assets/sounds/snow_sound.wav" id="3_1sf4i"]
 

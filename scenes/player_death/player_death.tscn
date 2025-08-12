@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d38r6gdkkfget"]
 
-[ext_resource type="Script" path="res://scenes/player_death/player_death.gd" id="1_7qlqe"]
+[ext_resource type="Script" uid="uid://bsyja2y27s12o" path="res://scenes/player_death/player_death.gd" id="1_7qlqe"]
 [ext_resource type="Texture2D" uid="uid://dqa452kt2sr4e" path="res://assets/player/dead_player.png" id="1_22huc"]
 [ext_resource type="AudioStream" uid="uid://7qcdmtyfn5ji" path="res://assets/sounds/death.wav" id="3_isif8"]
 

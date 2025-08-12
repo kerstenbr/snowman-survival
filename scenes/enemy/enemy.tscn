@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxsh4mbw4njph"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_di4h3"]
+[ext_resource type="Script" uid="uid://38aj0ms620h8" path="res://scenes/enemy/enemy.gd" id="1_di4h3"]
 [ext_resource type="Texture2D" uid="uid://tgkobs5gblco" path="res://assets/enemy/Krampus.png" id="2_41nq0"]
 [ext_resource type="AudioStream" uid="uid://b2nwrckgud6fa" path="res://assets/sounds/fireball_sound.wav" id="3_h0yjq"]
 
